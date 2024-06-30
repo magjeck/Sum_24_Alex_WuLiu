@@ -5,7 +5,7 @@ class BestGame : public Farming::FarmingApp
 {
 	virtual void OnUpdate() override
 	{
-		FARMING_LOG("Running" << "\n");
+		//FARMING_LOG("Running" << "\n");
 	}
 };
 
