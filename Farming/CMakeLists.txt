@@ -22,6 +22,7 @@ target_compile_definitions(Farming
 	PRIVATE
 		FARMING_LIB
 		FARMING_GLFW
+		FARMING_OPENGL
 )
 
 if(MSVC)
@@ -30,7 +31,8 @@ endif()
 
 target_include_directories(Farming PRIVATE ${CMAKE_SOURCE_DIR}/Farming)
 target_include_directories(Farming PRIVATE ${CMAKE_SOURCE_DIR}/glfw/include)
+target_include_directories(Farming PRIVATE ${CMAKE_SOURCE_DIR}/glad/include)
 
-target_link_libraries(Farming glfw)
+target_link_libraries(Farming glfw glad stbi)
 
 target_precompile_headers(Farming PRIVATE pch.h)

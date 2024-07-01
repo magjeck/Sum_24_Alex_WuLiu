@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{f0205d0b-c32c-4faa-afa3-b843914e9b11}</ProjectGuid>
-    <RootNamespace>Farming</RootNamespace>
+    <ProjectGuid>{c7f57ddf-2855-4753-b380-74f587335f3e}</ProjectGuid>
+    <RootNamespace>glad</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -40,13 +40,13 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
-    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -102,12 +102,9 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);FARMING_LIB;FARMING_MSVC;FARMING_DEBUG=2;FARMING_GLFW;FARMING_OPENGL</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)glad\include;$(SolutionDir)Farming;$(SolutionDir)glfw\include;$(SolutionDir)stbi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -120,12 +117,9 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);FARMING_LIB;FARMING_MSVC;FARMING_GLFW;FARMING_OPENGL</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpp20</LanguageStandard>
-      <PrecompiledHeader>Use</PrecompiledHeader>
-      <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(SolutionDir)glad\include;$(SolutionDir)Farming;$(SolutionDir)glfw\include;$(SolutionDir)stbi;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)glad\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -135,48 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="FarmingApp.h" />
-    <ClInclude Include="FarmingWindow.h" />
-    <ClInclude Include="Image.h" />
-    <ClInclude Include="ImageImplementation.h" />
-    <ClInclude Include="include\Farming.h" />
-    <ClInclude Include="pch.h" />
-    <ClInclude Include="Renderer.h" />
-    <ClInclude Include="RendererImplementation.h" />
-    <ClInclude Include="Shaders.h" />
-    <ClInclude Include="ShadersImplementation.h" />
-    <ClInclude Include="ThirdParty\codeGLFW\WindowGLFW.h" />
-    <ClInclude Include="ThirdParty\codeOpenGL\ImageOpenGL.h" />
-    <ClInclude Include="ThirdParty\codeOpenGL\RendererOpenGL.h" />
-    <ClInclude Include="ThirdParty\codeOpenGL\ShadersOpenGL.h" />
-    <ClInclude Include="Utilities.h" />
-    <ClInclude Include="WindowImplementation.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="FarmingApp.cpp" />
-    <ClCompile Include="FarmingWindow.cpp" />
-    <ClCompile Include="Image.cpp" />
-    <ClCompile Include="pch.cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
-    </ClCompile>
-    <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="Shaders.cpp" />
-    <ClCompile Include="ThirdParty\codeGLFW\WindowGLFW.cpp" />
-    <ClCompile Include="ThirdParty\codeOpenGL\ImageOpenGL.cpp" />
-    <ClCompile Include="ThirdParty\codeOpenGL\RendererOpenGL.cpp" />
-    <ClCompile Include="ThirdParty\codeOpenGL\ShadersOpenGL.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\build_glfw\src\glfw.vcxproj">
-      <Project>{6f90721b-57c6-3a10-a8cf-c9cab757e16d}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\glad\glad.vcxproj">
-      <Project>{c7f57ddf-2855-4753-b380-74f587335f3e}</Project>
-    </ProjectReference>
-    <ProjectReference Include="..\stbi\stbi.vcxproj">
-      <Project>{53edda8b-ce28-48fb-9e41-98e0d2cc6773}</Project>
-    </ProjectReference>
+    <ClCompile Include="src\glad.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
