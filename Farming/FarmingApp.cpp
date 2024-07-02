@@ -11,18 +11,23 @@
 
 namespace Farming
 {
-	void FarmingApp::OnUpdate()
-	{
-	}
-
-	void FarmingApp::Run()
+	FarmingApp::FarmingApp()
 	{
 		FarmingWindow::Init();
 		FarmingWindow::GetWindow()->CreateWindow(1000, 800, "Test");
 
 		Renderer::Init();
 
-		Farming::Image pic{ "../Farming/Assets/Image/Sun.png" };
+		SetFrameRate(DEFAULT_FRAME_RATE);
+	}
+
+	void FarmingApp::OnUpdate()
+	{
+	}
+
+	void FarmingApp::Run()
+	{
+		mNextFrameTime = std::chrono::steady_clock::now() + mFrameDuration;
 
 		while (true)
 		{
@@ -30,10 +35,18 @@ namespace Farming
 
 			OnUpdate();
 
-			Renderer::Get()->Draw(pic, 100, 200);
+			std::this_thread::sleep_until(mNextFrameTime);
 
 			FarmingWindow::GetWindow()->SwapBuffers();
 			FarmingWindow::GetWindow()->PollEvents();
+
+			mNextFrameTime = std::chrono::steady_clock::now() + mFrameDuration;
 		}
+	}
+
+	void FarmingApp::SetFrameRate(int newFrameRate)
+	{
+		mFrameRate = newFrameRate;
+		mFrameDuration = std::chrono::milliseconds{ 1000 } / mFrameRate;
 	}
 }

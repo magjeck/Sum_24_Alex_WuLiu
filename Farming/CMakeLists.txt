@@ -5,12 +5,27 @@ set(HEADER_FILES
 	FarmingWindow.h
 	WindowImplementation.h
 	ThirdParty/codeGLFW/WindowGLFW.h
+	Image.h
+	ImageImplementation.h
+	ThirdParty/codeOpenGL/ImageOpenGL.h
+	Shaders.h
+	ShadersImplementation.h
+	ThirdParty/codeOpenGL/ShadersOpenGL.h
+	Renderer.h
+	RendererImplementation.h
+	ThirdParty/codeOpenGL/RendererOpenGL.h
 )
 
 set(SOURCE_FILES
 	FarmingApp.cpp
 	FarmingWindow.cpp
 	ThirdParty/codeGLFW/WindowGLFW.cpp
+	Image.cpp
+	ThirdParty/codeOpenGL/ImageOpenGL.cpp
+	Shaders.cpp
+	ThirdParty/codeOpenGL/ShadersOpenGL.cpp
+	Renderer.cpp
+	ThirdParty/codeOpenGL/RendererOpenGL.cpp
 )
 
 add_library(Farming SHARED ${HEADER_FILES} ${SOURCE_FILES})
