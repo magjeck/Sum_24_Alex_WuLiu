@@ -19,6 +19,8 @@ namespace Farming
 		Renderer::Init();
 
 		SetFrameRate(DEFAULT_FRAME_RATE);
+
+		SetWindowCloseCallback([this](const WindowCloseEvent& event) {DefaultWindowCloseCallback(event); });
 	}
 
 	void FarmingApp::OnUpdate()
@@ -29,7 +31,7 @@ namespace Farming
 	{
 		mNextFrameTime = std::chrono::steady_clock::now() + mFrameDuration;
 
-		while (true)
+		while (mShouldContinue)
 		{
 			Renderer::Get()->ClearScreen();
 
@@ -48,5 +50,26 @@ namespace Farming
 	{
 		mFrameRate = newFrameRate;
 		mFrameDuration = std::chrono::milliseconds{ 1000 } / mFrameRate;
+	}
+
+	void FarmingApp::SetKeyPressedCallback(const std::function<void(const KeyPressedEvent&)>& newCallback)
+	{
+		FarmingWindow::GetWindow()->SetKeyPressedCallback(newCallback);
+	}
+
+	void FarmingApp::SetKeyReleasedCallback(const std::function<void(const KeyReleasedEvent&)>& newCallback)
+	{
+		FarmingWindow::GetWindow()->SetKeyReleasedCallback(newCallback);
+	}
+
+	void FarmingApp::SetWindowCloseCallback(const std::function<void(const WindowCloseEvent&)>& newCallback)
+	{
+		FarmingWindow::GetWindow()->SetWindowCloseCallback(newCallback);
+	}
+
+
+	void FarmingApp::DefaultWindowCloseCallback(const WindowCloseEvent& event)
+	{
+		mShouldContinue = false;
 	}
 }

@@ -56,4 +56,21 @@ namespace Farming
 	{
 		mImplementation->PollEvents();
 	}
+
+
+	void FarmingWindow::SetKeyPressedCallback(const std::function<void(const KeyPressedEvent&)>& newCallback)
+	{
+		mImplementation->SetKeyPressedCallback(newCallback);
+	}
+
+	void FarmingWindow::SetKeyReleasedCallback(const std::function<void(const KeyReleasedEvent&)>& newCallback)
+	{
+		mImplementation->SetKeyReleasedCallback(newCallback);
+	}
+
+	void FarmingWindow::SetWindowCloseCallback(const std::function<void(const WindowCloseEvent&)>& newCallback)
+	{
+		mImplementation->SetWindowCloseCallback(newCallback);
+	}
+
 }

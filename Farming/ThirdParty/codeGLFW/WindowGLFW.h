@@ -17,9 +17,23 @@ namespace Farming
 		virtual void SwapBuffers() override;
 		virtual void PollEvents() override;
 
+		virtual void SetKeyPressedCallback(const std::function<void(const KeyPressedEvent&)>& newCallback) override;
+		virtual void SetKeyReleasedCallback(const std::function<void(const KeyReleasedEvent&)>& newCallback) override;
+		virtual void SetWindowCloseCallback(const std::function<void(const WindowCloseEvent&)>& newCallback) override;
+
 		WindowGLFW();
 		~WindowGLFW();
+
 	private:
+		struct Callbacks
+		{
+			std::function<void(const KeyPressedEvent&)> KeyPressedCallback{ [](const KeyPressedEvent&) {} };
+			std::function<void(const KeyReleasedEvent&)> KeyReleasedCallback{ [](const KeyReleasedEvent&) {} };
+			std::function<void(const WindowCloseEvent&)> WindowCloseCallback{ [](const WindowCloseEvent&) {} };
+		} mCallbacks;
+
 		GLFWwindow* mWindow{ nullptr };
+
+		void SetDefaultCallbacks();
 	};
 }

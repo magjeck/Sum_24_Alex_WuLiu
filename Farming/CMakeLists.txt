@@ -14,6 +14,8 @@ set(HEADER_FILES
 	Renderer.h
 	RendererImplementation.h
 	ThirdParty/codeOpenGL/RendererOpenGL.h
+	Events.h
+	FarmingKeys.h
 )
 
 set(SOURCE_FILES
@@ -26,6 +28,7 @@ set(SOURCE_FILES
 	ThirdParty/codeOpenGL/ShadersOpenGL.cpp
 	Renderer.cpp
 	ThirdParty/codeOpenGL/RendererOpenGL.cpp
+	Events.cpp
 )
 
 add_library(Farming SHARED ${HEADER_FILES} ${SOURCE_FILES})
@@ -34,9 +37,9 @@ target_compile_definitions(Farming
 	PUBLIC
 		$<$<CONFIG:Debug>:FARMING_DEBUG=2>
 		$<$<CONFIG:RelWithDebInfo>:FARMING_DEBUG=1>
+		FARMING_GLFW
 	PRIVATE
 		FARMING_LIB
-		FARMING_GLFW
 		FARMING_OPENGL
 )
 

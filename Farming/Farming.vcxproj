@@ -135,7 +135,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Events.h" />
     <ClInclude Include="FarmingApp.h" />
+    <ClInclude Include="FarmingKeys.h" />
     <ClInclude Include="FarmingWindow.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="ImageImplementation.h" />
@@ -153,6 +155,7 @@
     <ClInclude Include="WindowImplementation.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Events.cpp" />
     <ClCompile Include="FarmingApp.cpp" />
     <ClCompile Include="FarmingWindow.cpp" />
     <ClCompile Include="Image.cpp" />
