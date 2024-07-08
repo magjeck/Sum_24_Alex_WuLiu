@@ -23,6 +23,25 @@ namespace Farming
 #endif
 	}
 
+	Image::Image()
+	{
+#ifdef FARMING_OPENGL
+		mImplementation = std::make_unique<ImageOpenGL>();
+#else
+		#ERROR_FARMING_OPENGL_ISNT_DEFINED
+#endif
+	}
+
+	void Image::LoadImage(const std::string& fileName)
+	{
+		mImplementation->LoadImage(fileName);
+	}
+
+	void Image::LoadImage(std::string&& fileName)
+	{
+		mImplementation->LoadImage(std::move(fileName));
+	}
+
 	void Image::Bind()
 	{
 		mImplementation->Bind();

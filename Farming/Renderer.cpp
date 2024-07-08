@@ -29,6 +29,18 @@ namespace Farming
 		mImplementation->Draw(pic, xCoord, yCoord);
 	}
 
+	void Renderer::Draw(Unit& unit, Shaders& shaders)
+	{
+		if(unit.IsVisible())
+			mImplementation->Draw(unit.mSprite, unit.mCoords.x, unit.mCoords.y, shaders);
+	}
+
+	void Renderer::Draw(Unit& unit)
+	{
+		if(unit.IsVisible())
+			mImplementation->Draw(unit.mSprite, unit.mCoords.x, unit.mCoords.y);
+	}
+
 	void Renderer::ClearScreen()
 	{
 		mImplementation->ClearScreen();

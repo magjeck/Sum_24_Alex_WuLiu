@@ -5,6 +5,7 @@
 #include "RendererImplementation.h"
 #include "Image.h"
 #include "Shaders.h"
+#include "Unit.h"
 
 namespace Farming
 {
@@ -16,6 +17,8 @@ namespace Farming
 
 		void Draw(Image &pic, int xCoord, int yCoord, Shaders& shaders);
 		void Draw(Image& pic, int xCoord, int yCoord);
+		void Draw(Unit& unit, Shaders& shaders);
+		void Draw(Unit& unit);
 		void ClearScreen();
 
 
