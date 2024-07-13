@@ -12,6 +12,18 @@ namespace Farming
 	}
 
 
+
+
+	Unit::Unit(const std::string& fileName, Coordinates newCoordinates) : mCoords(newCoordinates)
+	{
+		LoadSprite(fileName);
+	}
+
+	Unit::Unit(std::string&& fileName, Coordinates newCoordinates) : mCoords(newCoordinates)
+	{
+		LoadSprite(std::move(fileName));
+	}
+
 	void Unit::SetCoordinates(Coordinates newCoord)
 	{
 		mCoords = newCoord;
@@ -35,12 +47,12 @@ namespace Farming
 	bool Unit::OverlapsWith(const Unit& other) const
 	{
 		bool overlapsOnX{
-			(mCoords.x >= other.mCoords.x && mCoords.x <= other.mCoords.x + other.GetWidth()) or
+			(mCoords.x >= other.mCoords.x && mCoords.x <= other.mCoords.x + other.GetWidth()) ||
 			(mCoords.x <= other.mCoords.x && other.mCoords.x <= mCoords.x + GetWidth())
 		};
 
 		bool overlapsOnY{ 
-			(mCoords.y >= other.mCoords.y && mCoords.y <= other.mCoords.y + other.GetHeight()) or
+			(mCoords.y >= other.mCoords.y && mCoords.y <= other.mCoords.y + other.GetHeight()) ||
 			(mCoords.y <= other.mCoords.y && other.mCoords.y <= mCoords.y + GetHeight()) 
 		};
 
@@ -67,6 +79,23 @@ namespace Farming
 		return mSprite.GetHeight();
 	}
 
+	Speed Unit::GetSpeed() const
+	{
+		return mSpeed;
+	}
+
+	void Unit::SetSpeed(Speed newSpeed)
+	{
+		mSpeed = newSpeed;
+	}
+
+	void Unit::UpdateSpeed(int xChange, int yChange)
+	{
+		mSpeed.xSpeed += xChange;
+		mSpeed.ySpeed += yChange;
+	}
+
+
 	bool Unit::IsVisible() const
 	{
 		return mIsVisible;
@@ -80,6 +109,14 @@ namespace Farming
 	void Unit::SetInvisible()
 	{
 		mIsVisible = false;
+	}
+
+	Speed::Speed()
+	{
+	}
+
+	Speed::Speed(int xComponent, int yComponent) : xSpeed(xComponent), ySpeed(yComponent)
+	{
 	}
 
 }

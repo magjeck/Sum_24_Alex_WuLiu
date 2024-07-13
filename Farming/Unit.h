@@ -3,7 +3,6 @@
 #include "pch.h"
 #include "Utilities.h"
 #include "Image.h"
-#include "Renderer.h"
 
 namespace Farming
 {
@@ -16,10 +15,22 @@ namespace Farming
 		Coordinates(int xVal, int yVal);
 	};
 
+	struct FARMING_API Speed
+	{
+		int xSpeed{ 0 };
+		int ySpeed{ 0 };
+
+		Speed();
+		Speed(int xComponent, int yComponent);
+	};
+
 
 	class FARMING_API Unit
 	{
 	public:
+		Unit(const std::string& fileName, Coordinates newCoordinates);
+		Unit(std::string&& fileName, Coordinates newCoordinates);
+
 		void SetCoordinates(Coordinates newCoord);
 		Coordinates GetCoordinates() const;
 
@@ -34,6 +45,10 @@ namespace Farming
 		int GetWidth() const;
 		int GetHeight() const;
 
+		Speed GetSpeed() const;
+		void SetSpeed(Speed newSpeed);
+		void UpdateSpeed(int xChange, int yChange);
+
 		bool IsVisible() const;
 		void SetVisible();
 		void SetInvisible();
@@ -44,5 +59,6 @@ namespace Farming
 		Coordinates mCoords;
 		Image mSprite;
 		bool mIsVisible{ true };
+		Speed mSpeed;
 	};
 }
