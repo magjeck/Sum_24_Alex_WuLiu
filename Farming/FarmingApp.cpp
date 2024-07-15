@@ -14,7 +14,7 @@ namespace Farming
 	FarmingApp::FarmingApp()
 	{
 		FarmingWindow::Init();
-		FarmingWindow::GetWindow()->CreateWindow(1000, 800, "Test");
+		FarmingWindow::GetWindow()->CreateWindow(1000, 800, "Farm");
 
 		Renderer::Init();
 

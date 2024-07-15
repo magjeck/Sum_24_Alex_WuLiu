@@ -95,6 +95,36 @@ namespace Farming
 		mSpeed.ySpeed += yChange;
 	}
 
+	void Unit::SetIsInteract()
+	{
+		IsInteract = 1;
+	}
+
+	void Unit::SetNoInteract()
+	{
+		IsInteract = 0;
+	}
+
+	bool Unit::GetIsInteract()
+	{
+		return IsInteract;
+	}
+
+	void Unit::SetCounter(int num)
+	{
+		mCounter = num;
+	}
+
+	void Unit::UpdateCounter(int num)
+	{
+		mCounter = mCounter + num;
+	}
+
+	int Unit::GetCounter() const
+	{
+		return mCounter;
+	}
+
 
 	bool Unit::IsVisible() const
 	{

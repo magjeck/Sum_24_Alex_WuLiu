@@ -49,6 +49,15 @@ namespace Farming
 		void SetSpeed(Speed newSpeed);
 		void UpdateSpeed(int xChange, int yChange);
 
+		void SetIsInteract();
+		void SetNoInteract();
+		bool GetIsInteract();
+
+
+		void SetCounter(int num);
+		void UpdateCounter(int num);
+		int GetCounter() const;
+
 		bool IsVisible() const;
 		void SetVisible();
 		void SetInvisible();
@@ -60,5 +69,7 @@ namespace Farming
 		Image mSprite;
 		bool mIsVisible{ true };
 		Speed mSpeed;
+		int mCounter = 0;
+		bool IsInteract{ true };
 	};
 }
