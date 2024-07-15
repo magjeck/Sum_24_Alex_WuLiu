@@ -3,19 +3,25 @@ Rules of the Farming game (Using arrow keys)
 - Then, return home to sleep after a hard day's work
 
 Uniqueness of my code
+- I'm still using the map class to draw the image of the background
+
 - In my Unit class 
-  I have added 2 private members: int mCounter and bool IsInteract
-  I have added the functions for Interactability and Counter
+  I have added 2 private members: int mCounter and bool IsInteract.
+  I have added functions for Interactability and Counter.
 	*For every box that the farmer interacts with, the box no longer is interactable
 	and the farmer's counter goes up by 1;
 
 - In my main.cpp
-  I have made several conditions to display certain images
+  I have made several conditions to display certain images (Images such as boxes, garden plots, and house keep on displaying).
   	*If each box is interactable, display the crop bubble
   	*If the farmer interacts with a box and that box is interactable, 
 		the crop bubble of that box disappears, box is set non interactable, 
-		farmer's counter goes up by 1;
+		and farmer's counter goes up by 1;
 	*If the farmer's counter is equal to 4, the house sleep bubble appears
 	*Interacting with the house will set the farmer's counter to 0, display all crop bubbles,
 		reset all boxes interactability, and house sleep bubble disappears
-  
+
+
+Most of the code I have written out are in the time complexity of O(1).
+The conditionals in the main.cpp are mostly using accessors for its parameters and using mutators within the functions.
+In other cases, they draw out the images.
